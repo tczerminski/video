@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Open Sans", sans-serif;
+  background: white;
+  overflow: hidden;
+  color: #333;
+}
+
+#confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none; /* nie blokuje dotyku */
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  max-width: 700px;
+  margin: 4vh auto;
+  padding: 2rem;
+}
+
+h1 {
+  color: #b8476d;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+video {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  margin-top: 1.5rem;
+  font-style: italic;
+  color: #777;
+}
+
+/* 📱 Poprawki dla telefonów */
+@media (max-width: 480px) {
+  .container {
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    padding: 1rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
