@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dziękujemy, Pani Asiu 💐</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dziękujemy, Pani Asiu 💐</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <canvas id="confetti"></canvas>
+<canvas id="confetti"></canvas>
 
-  <div class="container">
+<div class="container">
     <h1>Dziękujemy, Pani Asiu! 💐</h1>
     <p>
-      Z okazji Dnia Nauczyciela przygotowaliśmy ten filmik —<br />
-      z wdzięcznością za Pani uśmiech, cierpliwość i serce,<br />
-      które codziennie wkłada Pani w opiekę nad nami 💖
+        Z okazji Dnia Nauczyciela przygotowaliśmy ten filmik —<br/>
+        z wdzięcznością za Pani uśmiech, cierpliwość i serce,<br/>
+        które codziennie wkłada Pani w opiekę nad nami 💖
     </p>
 
-    <video controls>
-      <source src="video.mp4" type="video/mp4">
-      Twoja przeglądarka nie obsługuje wideo.
+    <video controls preload="metadata">
+        <source src="video.mp4" type="video/mp4">
+        Twoja przeglądarka nie obsługuje wideo.
     </video>
 
     <footer>
-      <p>Z wdzięcznością i uśmiechem,<br />grupa „Kotków” 🐱</p>
+        <p>Z wdzięcznością i uśmiechem,<br/>grupa „Kotków” 🐱</p>
     </footer>
-  </div>
+</div>
 
-  <script>
+<script>
     // 🎉 Proste konfetti
     const canvas = document.getElementById('confetti');
     const ctx = canvas.getContext('2d');
@@ -38,52 +38,53 @@
     canvas.height = window.innerHeight;
 
     function randomColor() {
-      const colors = ['#f7b2c0', '#fbe7a1', '#a7e9af', '#a0c4ff', '#ffd6a5'];
-      return colors[Math.floor(Math.random() * colors.length)];
+        const colors = ['#f7b2c0', '#fbe7a1', '#a7e9af', '#a0c4ff', '#ffd6a5'];
+        return colors[Math.floor(Math.random() * colors.length)];
     }
 
     for (let i = 0; i < confettiCount; i++) {
-      confetti.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height - canvas.height,
-        r: Math.random() * 6 + 2,
-        d: Math.random() * confettiCount,
-        color: randomColor(),
-        tilt: Math.random() * 10 - 10
-      });
+        confetti.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height - canvas.height,
+            r: Math.random() * 6 + 2,
+            d: Math.random() * confettiCount,
+            color: randomColor(),
+            tilt: Math.random() * 10 - 10
+        });
     }
 
     function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      confetti.forEach(c => {
-        ctx.beginPath();
-        ctx.fillStyle = c.color;
-        ctx.ellipse(c.x, c.y, c.r, c.r / 2, Math.PI / 4, 0, 2 * Math.PI);
-        ctx.fill();
-      });
-      update();
-      requestAnimationFrame(draw);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        confetti.forEach(c => {
+            ctx.beginPath();
+            ctx.fillStyle = c.color;
+            ctx.ellipse(c.x, c.y, c.r, c.r / 2, Math.PI / 4, 0, 2 * Math.PI);
+            ctx.fill();
+        });
+        update();
+        requestAnimationFrame(draw);
     }
 
     let angle = 0;
+
     function update() {
-      angle += 0.01;
-      confetti.forEach(c => {
-        c.y += (Math.cos(angle + c.d) + 1 + c.r / 2) / 2;
-        c.x += Math.sin(angle);
-        if (c.y > canvas.height) {
-          c.y = 0 - 10;
-          c.x = Math.random() * canvas.width;
-        }
-      });
+        angle += 0.01;
+        confetti.forEach(c => {
+            c.y += (Math.cos(angle + c.d) + 1 + c.r / 2) / 2;
+            c.x += Math.sin(angle);
+            if (c.y > canvas.height) {
+                c.y = 0 - 10;
+                c.x = Math.random() * canvas.width;
+            }
+        });
     }
 
     draw();
 
     window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
     });
-  </script>
+</script>
 </body>
 </html>
